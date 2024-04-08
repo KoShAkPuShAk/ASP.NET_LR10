@@ -1,0 +1,89 @@
+﻿@model Laba10.Models.RegistrationForm
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fefefe;
+            color: #666;
+            font-size: 18px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        input[type="text"], input[type="email"], input[type="date"], select {
+            width: 60%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #f2f2f2;
+            color: #333;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            color: #4CAF50;
+            font-size: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 20px;
+            margin-top: 16px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registration Form</h2>
+
+    <form method="post">
+        <label for="Name">Full Name:</label><br />
+        <input type="text" id="Name" name="Name" required /><br />
+
+        <label for="Email">Email:</label><br />
+        <input type="email" id="Email" name="Email" required /><br />
+
+        <label for="ConsultationDate">Preferred Consultation Date:</label><br />
+        <input type="date" id="ConsultationDate" name="ConsultationDate" required min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" /><br />
+
+        <label for="SelectedProduct">Product:</label><br />
+        <select id="SelectedProduct" name="SelectedProduct">
+            <option value="">Select Product</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="C#">C#</option>
+            <option value="Java">Java</option>
+            <option value="Python">Python</option>
+            <option value="Basics">Basics</option>
+        </select><br />
+
+        <input type="submit" value="Save" formaction="@Url.Action("Index", "Registration")" />
+    </form>
+</body>
+</html>
